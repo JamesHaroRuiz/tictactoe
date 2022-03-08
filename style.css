@@ -30,8 +30,8 @@ table {
 }
 .tile {
     border: 5px solid rgb(32, 29, 29);
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 90px;
+    min-height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;

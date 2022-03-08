@@ -8,11 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
     let gameActivity = true;
     /**add score table code */
 
-    const TEAMX_WON = 'TEAMX_WON';
-    const TEAMO_WON = 'TEAMO_WON';
-    const TIE = 'TIE';
-
-
 /* Configuration of Tiles
     1 2 3
     4 5 6
@@ -30,14 +25,14 @@ window.addEventListener('DOMContentLoaded', () => {
         [3, 6, 9]
     ];
     
-   
+/* The system checks for the score using the following code*/
     function checkResult() {
         let roundWon = false;
-        for (let i = 0; i <= 8; i++) {
+        for (let i = 0; i <= 7; i++) {
             const winCondition = waysToWin[i];
             const a = board[winCondition[0]];
             const b = board[winCondition[1]];
-            const c = board[winCondition[2]];
+            const c = board[winCondition[9]];
             if (a === '' || b === '' || c === '') {
                 continue;
             }
@@ -49,11 +44,9 @@ window.addEventListener('DOMContentLoaded', () => {
     if (roundWon) {
         gameActivity = false;
             return;
-    };
-
-    if (!board.includes(''))
-        announce(TIE);
+        };
     }
+
 
     const isValidAction = (tile) => {
         if (tile.innerText === 'X' || tile.innerText === 'O'){
@@ -66,7 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const updateBoard =  (index) => {
         board[index] = currentTeam;
     };
-    
+/*Logic that would change you from X to O.*/
     const changeTeam = () => {
         teamDisplay.classList.remove(`team${currentTeam}`);
         currentTeam = currentTeam === 'X' ? 'O' : 'X';
